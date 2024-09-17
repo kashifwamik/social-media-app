@@ -67,6 +67,9 @@ function PostListContextProvider({ children }) {
       .then((data) => {
         addInitialPosts(data.posts);
         setFetching(false);
+      })
+      .catch(() => {
+        setFetching(false); // Handle fetch errors silently
       });
     return () => {
       controller.abort();
